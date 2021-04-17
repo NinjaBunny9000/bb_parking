@@ -73,7 +73,7 @@ function parkVehicle()
 	end, vehProps)
 end
 
-local parkingMenu = MenuV:CreateMenu(
+local ParkingMenu = MenuV:CreateMenu(
 		'PARKING',
 		'Alta St Condos Lot // 8145',
 		'centerleft',
@@ -84,11 +84,11 @@ local parkingMenu = MenuV:CreateMenu(
 		'bb_parking'
 )
 
-parkingMenu:On('open', function(m)
+ParkingMenu:On('open', function(m)
 	--m:ClearItems()
 end)
 
-local carMenu = MenuV:CreateMenu(
+local CarMenu = MenuV:CreateMenu(
 		'PARKING',
 		'Vehicle Details',
 		'centerleft',
@@ -100,20 +100,30 @@ local carMenu = MenuV:CreateMenu(
 function listVehicles()
 	ESX.TriggerServerCallback('bb_parking:GetOwnedVehicles', function(ownedVehicles)
 		OwnedVehicles = ownedVehicles
-		parkingMenu:ClearItems()
+		ParkingMenu:ClearItems()
 		local menuItems = {}
+		local carItems = {}
 		for i,veh in pairs(ownedVehicles) do
-			menuItems[i] = parkingMenu:AddButton({ icon='🚘', label=veh.name, description='San Andreas Plate #'..veh.plate, value=veh.plate, disabled=false });
+			menuItems[i] = ParkingMenu:AddButton({ icon='🚘', label=veh.name, description='San Andreas Plate #'..veh.plate, value= CarMenu, disabled=false });
 			menuItems[i]:On('select', function(item)
 				-- TODO update subtitle to show the correct lot
-				carMenu:ClearItems()
+				CarMenu:ClearItems()
 				-- add items for the car
-
-				retrieveVehicle(menuItems[i]:GetValue(item))
+				carItems[i] = {}
+				--carItems[i].rename = CarMenu:AddButton({ icon='🆎', label='Name Vehicle', description='Give it a custom name!', value=veh.plate, disabled=false })
+				carItems[i].retrieve = CarMenu:AddButton({ icon='🔑', label='Retrieve Vehicle', description='Spwn '..veh.plate, value=veh.plate, disabled=false })
+				--carItems[i].rename:On('select', function(selection)
+				--	renameVehicle(carItems[i].rename:GetValue(selection))
+				--end)
+				carItems[i].retrieve:On('select', function(selection)
+					retrieveVehicle(carItems[i].retrieve:GetValue(selection))
+					CarMenu:Close()
+					ParkingMenu:Close()
+				end)
 			end)
 		end
-		parkingMenu:Close()
-		parkingMenu:Open()
+		ParkingMenu:Close()
+		ParkingMenu:Open()
 	end)
 end
 
@@ -146,11 +156,8 @@ function findClosestEmptyParkingSpot(zone)
 	for i,parkingSpot in pairs(ZoneProperties[zone].parkingSpots) do
 		dist = getDistanceBetween(playerCoord, parkingSpot[1])
 		closestVehDist = getDistanceBetween(parkingSpot[1], GetEntityCoords(ESX.Game.GetClosestVehicle(parkingSpot[1])))
-		print(i, 'dist', dist, 'closestVehDist', closestVehDist)
-		if closestSpot.dist == nil and closestVehDist < 1.5 then
-			-- the first spot is closest but it's occupied, continue..
+		if closestSpot.dist == nil and closestVehDist < 1.5 then -- the first spot is closest but it's occupied
 		elseif closestSpot.dist == nil or (dist < closestSpot.dist and closestVehDist > 1.5) then
-			print('closest spot is now', i)
 			closestSpot.coord = parkingSpot[1]
 			closestSpot.heading = parkingSpot[2]
 			closestSpot.dist = dist
@@ -190,7 +197,7 @@ function retrieveVehicle(plate)
 		TriggerServerEvent('bb_parking:SetVehicleState', storedData.plate, false)
 		TriggerEvent('bb_lockandkey:GiveKeys', storedData.plate, true)
 		disableVehicle(spawnedVeh, false)
-		parkingMenu:Close()
+		ParkingMenu:Close()
 	end)
 	OwnedVehicles = {}
 end
