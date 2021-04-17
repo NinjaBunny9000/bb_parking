@@ -4,8 +4,8 @@
 More info coming soon!
 
 ### Requirements
-[PolyZone](https://github.com/mkafrin/PolyZone)
-[MenuV](https://forum.cfx.re/t/release-menuv-standalone-nui-menu-for-fivem-v1-4-docs-added/1824558)
+1) [PolyZone](https://github.com/mkafrin/PolyZone)
+2) [MenuV](https://forum.cfx.re/t/release-menuv-standalone-nui-menu-for-fivem-v1-4-docs-added/1824558)
 
 ## Structure
 
