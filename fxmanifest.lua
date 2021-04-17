@@ -2,7 +2,7 @@ fx_version 'cerulean'
 
 game 'gta5'
 
-description 'BadBunny\'s Parking System''
+description 'BadBunny\'s Parking System'
 
 server_scripts {
 	'@mysql-async/lib/MySQL.lua',
