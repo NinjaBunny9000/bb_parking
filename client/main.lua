@@ -25,6 +25,53 @@ local State = {
 	insideVehicle = false
 }
 
+
+-------------------------------------------------------- MENUS ---------------------------------------------------------
+
+local ParkingMenu = MenuV:CreateMenu(
+		'PARKING',
+		'Alta St Condos Lot // 8145',
+		'centerleft',
+		249, 244, 65,
+		'size-125',
+		'default',
+		'menuv',
+		'bb_parking'
+)
+
+ParkingMenu:On('open', function(m)
+	--m:ClearItems()
+end)
+
+local CarMenu = MenuV:CreateMenu(
+		'PARKING',
+		'Vehicle Details',
+		'centerleft',
+		249, 244, 65
+)
+
+function closeMenus()
+	MenuV:CloseMenu(ParkingMenu, function()
+		MenuV:CloseMenu(CarMenu, function()
+
+		end)
+	end)
+
+end
+
+function reloadMenu(menu)
+	MenuV:CloseMenu(ParkingMenu, function()
+		print('parking menu closed')
+		MenuV:CloseMenu(CarMenu, function()
+			print('car menu closed')
+			menu:Open()
+		end)
+	end)
+end
+
+
+-------------------------------------------------------- ZONES ---------------------------------------------------------
+
 for zoneId,zone in pairs(Zones) do
 	zone:onPointInOut(PolyZone.getPlayerPosition, function(isPointInside, point)
 		local playerPed = GetPlayerPed(PlayerId())
@@ -54,6 +101,30 @@ for zoneId,zone in pairs(Zones) do
 end
 
 
+------------------------------------------------------- METHODS --------------------------------------------------------
+
+function renameVehicle(plate)
+
+	ESX.UI.Menu.CloseAll() -- make sure all other esx menus are closed
+	ESX.UI.Menu.Open('dialog', GetCurrentResourceName(), 'renamevehicle', {
+		title = 'Give your ride a new name!'
+	}, function(data, menu)
+		if string.len(data.value) >= Config.VehicleProperties.nameMin and string.len(data.value) < Config.VehicleProperties.nameMax then
+			ESX.TriggerServerCallback('bb_parking:UpdateVehicleName', function(success)
+				ESX.UI.Menu.CloseAll()
+				exports['bb_helpers']:notify(PlayerId(-1), 'pass', 'You changed your vehicle\'s name to '..data.value..'!', 5000)
+				listVehicles()
+			end, plate, data.value)
+		else
+			ESX.ShowNotification('You used too little or too many characters')
+		end
+	end, function(data, menu)
+		closeMenus()
+		menu.Close()
+		ESX.UI.Menu.CloseAll()
+	end)
+
+end
 
 function parkVehicle()
 	local vehicle = GetVehiclePedIsIn(PlayerPedId())
@@ -73,30 +144,6 @@ function parkVehicle()
 	end, vehProps)
 end
 
-local ParkingMenu = MenuV:CreateMenu(
-		'PARKING',
-		'Alta St Condos Lot // 8145',
-		'centerleft',
-		249, 244, 65,
-		'size-125',
-		'default',
-		'menuv',
-		'bb_parking'
-)
-
-ParkingMenu:On('open', function(m)
-	--m:ClearItems()
-end)
-
-local CarMenu = MenuV:CreateMenu(
-		'PARKING',
-		'Vehicle Details',
-		'centerleft',
-		249, 244, 65
-)
-
-
-
 function listVehicles()
 	ESX.TriggerServerCallback('bb_parking:GetOwnedVehicles', function(ownedVehicles)
 		OwnedVehicles = ownedVehicles
@@ -110,15 +157,14 @@ function listVehicles()
 				CarMenu:ClearItems()
 				-- add items for the car
 				carItems[i] = {}
-				--carItems[i].rename = CarMenu:AddButton({ icon='🆎', label='Name Vehicle', description='Give it a custom name!', value=veh.plate, disabled=false })
+				carItems[i].rename = CarMenu:AddButton({ icon='🆎', label='Name Vehicle', description='Give it a custom name!', value=veh.plate, disabled=false })
 				carItems[i].retrieve = CarMenu:AddButton({ icon='🔑', label='Retrieve Vehicle', description='Spwn '..veh.plate, value=veh.plate, disabled=false })
-				--carItems[i].rename:On('select', function(selection)
-				--	renameVehicle(carItems[i].rename:GetValue(selection))
-				--end)
+				carItems[i].rename:On('select', function(selection)
+					renameVehicle(carItems[i].rename:GetValue(selection))
+				end)
 				carItems[i].retrieve:On('select', function(selection)
+					closeMenus()
 					retrieveVehicle(carItems[i].retrieve:GetValue(selection))
-					CarMenu:Close()
-					ParkingMenu:Close()
 				end)
 			end)
 		end
@@ -133,11 +179,11 @@ function applyVehicleSettings(spawnedVeh, storedData)
 	SetVehRadioStation(spawnedVeh, "OFF")
 	SetVehicleFixed(spawnedVeh)
 	SetVehicleDeformationFixed(spawnedVeh)
-
 	--SetVehicleEngineHealth(callback_vehicle, 1000) -- Might not be needed
 	--SetVehicleBodyHealth(callback_vehicle, 1000) -- Might not be needed
 end
 
+-- TODO move to bb_helpers/bb_core
 function getDistanceBetween(p1, p2)
 	local x = (p2.x - p1.x) * (p2.x - p1.x)
 	local y = (p2.y - p1.y) * (p2.y - p1.y)
@@ -216,13 +262,3 @@ RegisterCommand('parkingmenu', function(source)
 end, false)
 
 RegisterKeyMapping('parkingmenu', '[VEHICLE] Parkinglot Menu', 'keyboard', 'e')
-
-
-
-
-
-RegisterNetEvent('bb_parking:')
-AddEventHandler(function(source)
-
-end)
-

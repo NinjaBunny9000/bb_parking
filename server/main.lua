@@ -91,4 +91,23 @@ ESX.RegisterServerCallback('bb_parking:GetOwnedVehicles', function(source, cb, j
 end)
 
 
+ESX.RegisterServerCallback('bb_parking:UpdateVehicleName', function(source, cb, plate, name)
+    local xPlayer = ESX.GetPlayerFromId(source)
+    MySQL.Async.fetchAll('UPDATE owned_vehicles SET name=@name WHERE owner=@owner AND plate=@plate', {
+        ['@owner'] = xPlayer.identifier,
+        ['@plate'] = plate,
+        ['@name'] = name,
+
+    }, function(data)
+        if data then
+            print('vehicle name updated')
+            cb(true)
+        else
+            print('SOMETHIN\'S FUCKY....', xPlayer.identifier, plate, name)
+            cb(false)
+        end
+    end)
+end)
+
+
 
