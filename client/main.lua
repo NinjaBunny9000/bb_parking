@@ -74,12 +74,12 @@ end
 
 for zoneId,zone in pairs(Zones) do
 	zone:onPointInOut(PolyZone.getPlayerPosition, function(isPointInside, point)
-		local playerPed = GetPlayerPed(PlayerId())
 		if isPointInside then -- player entered the zone
 			State.insideLot = true
 			State.lotId = zoneId
 			CreateThread(function()
 				-- track when ped gets in/out vehs while in the zone
+				local playerPed = GetPlayerPed(PlayerId())
 				while State.insideLot do
 					Wait(250) -- makes sure we only do this (at most) once per frame, otherwise bad things happen D:
 					if IsPedSittingInAnyVehicle(playerPed) then

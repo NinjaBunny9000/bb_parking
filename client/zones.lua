@@ -5,8 +5,7 @@
 ---
 
 ParkingCards = {
-    BadBunnyVIP = {
-
+    DemoCard = {
     }
 }
 
@@ -74,7 +73,7 @@ ZoneProperties.publicLot8037 = {
     showBlip = true,
     public = true,
     pricePerHour = 100, -- IRL hours, in-game currency
-    parkingCardAccepted = ParkingCards.BadBunnyVIP,
+    parkingCardAccepted = ParkingCards.DemoCard,
     hideParkedCars = true,
     parkingSpots = { --  parking spots
         -- vector coords, heading
@@ -105,3 +104,46 @@ ZoneProperties.publicLot8037 = {
         {vector3(239.24975585938,-807.81652832031,29.817392349243), 67.0},
     }
 }
+
+
+--Name: testZone | 2021-04-18T03:59:00Z
+Zones.testZone = PolyZone:Create({
+    vector2(107.52922821045, -198.13516235352),
+    vector2(98.244728088379, -221.63882446289),
+    vector2(69.518508911133, -212.92121887207),
+    vector2(77.808059692383, -187.94606018066)
+}, {
+    name="testZone",
+    debugPoly = false,
+    --minZ = 54.148162841797,
+    --maxZ = 55.929985046387
+})
+
+
+ZoneProperties.testZone = {
+    label = 'Public Parking Lot #7190',
+    showBlip = true,
+    public = true,
+    pricePerHour = 100, -- IRL hours, in-game currency
+    parkingCardAccepted = ParkingCards.DemoCard,
+    hideParkedCars = true,
+    parkingSpots = { --  parking spots
+        -- vector coords, heading
+        {vector3(101.08866882324,-202.88732910156,54.125667572021), 249.25},
+        {vector3(99.642204284668,-206.05413818359,54.118789672852), 249.25},
+        {vector3(98.546195983887,-209.32655334473,54.120258331299), 249.25},
+        {vector3(95.991638183594,-215.78785705566,54.119132995605), 249.25},
+        {vector3(95.55899810791,-219.18753051758,54.119033813477), 249.25},
+        {vector3(85.636734008789,-213.58013916016,54.119441986084), 158.25},
+        {vector3(82.384132385254,-212.47415161133,54.119438171387), 158.25},
+        {vector3(79.239952087402,-210.82872009277,54.120231628418), 158.25},
+        {vector3(76.155853271484,-204.88893127441,54.119338989258), 69.4},
+        {vector3(77.27709197998,-201.81079101562,54.119228363037), 69.4},
+        {vector3(78.411041259766,-198.46551513672,54.119003295898), 69.4},
+        {vector3(84.767768859863,-195.41590881348,54.119285583496), 340.45},
+        {vector3(87.987174987793,-196.41296386719,54.119327545166), 340.45},
+        {vector3(91.174369812012,-197.70706176758,54.120155334473), 340.45},
+    }
+}
+
+-- TODO 7148,
