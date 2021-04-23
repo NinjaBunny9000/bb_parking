@@ -4,13 +4,14 @@
 --- DateTime: 4/16/2021 6:17 PM
 ---
 
---- possible lots found but not added across from 1105, 1040, 1080, 5011, 5033(plaza), 5061, 7004, 8170, 9110(mall), 10025(ungated airport lot)
----  lots added: 5047, 7148, 7179, 7190, 7202 [rockford plaza], 7226, 8032 <-> 8035, 8037, 8070, 9294, 10026
+--- parking lots found but not added 5061, 8170, 9110(mall), 10025(ungated airport lot)
+--  lots added: 5047, 7148, 7179, 7190, 7202 [rockford plaza], 7226, 8032 <-> 8035, 8037, 8070, 9294, 10026
 
 ParkingCards = {
     DemoCard = {
     }
 }
+
 
 Zones = {}
 ZoneProperties = {}
@@ -33,6 +34,7 @@ ZoneProperties.altaStAptsSideLot = {
     label = 'Alta St Condos, Side Lot',
     public = true,
     showBlip = true,
+    blipCoords = vector3(-248.83186340332,-997.28967285156,29.237838745117),
     property = 'AltaStLowEndCondo',
     hideParkedCars = true,
     parkingSpots = { --  parking spots
@@ -55,7 +57,7 @@ ZoneProperties.altaStAptsSideLot = {
 }
 
 
---Name: parkinglot1 | 2021-04-11T06:40:56Z
+--Name: publicLot1 | 2021-04-11T06:40:56Z
 Zones.publicLot8037 =  PolyZone:Create({
     vector2(239.94717407227, -820.23675537109),
     vector2(252.36073303223, -785.20373535156),
@@ -66,7 +68,7 @@ Zones.publicLot8037 =  PolyZone:Create({
     vector2(199.65733337402, -805.83782958984)
 }, {
     name="publicLot8037",
-    debugPoly = false
+    debugPoly = true
     --minZ = 30.077131271362,
     --maxZ = 31.078098297119
 })
@@ -74,6 +76,7 @@ Zones.publicLot8037 =  PolyZone:Create({
 ZoneProperties.publicLot8037 = {
     label = 'Public Parking Lot #8037',
     showBlip = true,
+    blipCoords = vector3(209.41851806641,-806.98937988281,30.895170211792),
     public = true,
     pricePerHour = 100, -- IRL hours, in-game currency
     parkingCardAccepted = ParkingCards.DemoCard,
@@ -109,7 +112,7 @@ ZoneProperties.publicLot8037 = {
 }
 
 
---Name: publicLot7190 | 2021-04-18T03:59:00Z
+--Name: testZone | 2021-04-18T03:59:00Z
 Zones.publicLot7190 = PolyZone:Create({
     vector2(107.52922821045, -198.13516235352),
     vector2(98.244728088379, -221.63882446289),
@@ -117,7 +120,7 @@ Zones.publicLot7190 = PolyZone:Create({
     vector2(77.808059692383, -187.94606018066)
 }, {
     name="publicLot7190",
-    debugPoly = false,
+    debugPoly = Config.DEBUG,
     --minZ = 54.148162841797,
     --maxZ = 55.929985046387
 })
@@ -125,6 +128,7 @@ Zones.publicLot7190 = PolyZone:Create({
 ZoneProperties.publicLot7190 = {
     label = 'Public Parking Lot #7190',
     showBlip = true,
+    blipCoords = vector3(90.075584411621,-203.53323364258,54.491340637207),
     public = true,
     pricePerHour = 100, -- IRL hours, in-game currency
     parkingCardAccepted = ParkingCards.DemoCard,
@@ -156,7 +160,7 @@ ZoneProperties.publicLot7190 = {
     }
 }
 
---Name: parkinglot 5047 - cam 4/21/21
+--Name: publicLot 5047 - cam 4/21/21
 Zones.publicLot5047 =  PolyZone:Create({
     vector2(-3040.849609375,596.55847167969),
     vector2(-3043.1784667969,595.78863525391),
@@ -171,7 +175,7 @@ Zones.publicLot5047 =  PolyZone:Create({
     vector2(-3045.9816894531,608.35833740234)
 }, {
     name="publicLot5047",
-    debugPoly = false,
+    debugPoly = Config.DEBUG,
     --minZ = 51.56,
     --maxZ = 57.37
 })
@@ -184,10 +188,8 @@ ZoneProperties.publicLot5047 = {
     pricePerHour = 100, -- IRL hours, in-game currency
     parkingCardAccepted = ParkingCards.DemoCard,
     hideParkedCars = true,
-    parkingSpots = { --  parking spots
-        -- vector coords, heading
-
-        -- row 1 
+    parkingSpots = {
+        
         {vector3(-3050.9150390625,597.24591064453,7.0712285041809), 108.71},
         {vector3(-3052.3520507812,600.03729248047,6.9788117408752), 108.71},
         {vector3(-3053.0092773438,602.99359130859,6.9103579521179), 108.71},
@@ -197,7 +199,7 @@ ZoneProperties.publicLot5047 = {
 }
 
 
---Name: parkinglot 7148 - cam 4/21/21
+--Name: publicLot 7148 - cam 4/21/21
 Zones.publicLot7148 =  PolyZone:Create({
     vector2(-536.22485351562, 71.157936096191),
     vector2(-490.13128662109,69.536598205566),
@@ -210,7 +212,7 @@ Zones.publicLot7148 =  PolyZone:Create({
     vector2(-537.32202148438,63.032531738281)
 }, {
     name="publicLot7148",
-    debugPoly = false,
+    debugPoly = Config.DEBUG,
     minZ = 51.56,
     maxZ = 57.37
 })
@@ -248,7 +250,7 @@ ZoneProperties.publicLot7148 = {
 }
 
 
---Name: parkinglot 7179 - cam 4/21/21
+--Name: publicLot 7179 - cam 4/21/21
 Zones.publicLot7179 =  PolyZone:Create({
     vector2(-888.14697265625,-138.55535888672),
     vector2(-901.75897216797,-144.78569030762),
@@ -270,7 +272,7 @@ Zones.publicLot7179 =  PolyZone:Create({
     vector2(-885.90557861328,-142.34191894531)
 }, {
     name="publicLot7179",
-    debugPoly = false,
+    debugPoly = Config.DEBUG,
     minZ = 36.44,
     maxZ = 43.12
 })
@@ -305,7 +307,7 @@ ZoneProperties.publicLot7179 = {
 }
 
 
---Name: parkinglot 7202 - Rockford plaza - cam 4/21/21
+--Name: publicLot 7202 - Rockford plaza - cam 4/21/21
 Zones.publicLot7202 =  PolyZone:Create({
     vector2(-160.62199401855,-189.40127563477),
     vector2(-151.11535644531,-160.50735473633),
@@ -319,7 +321,7 @@ Zones.publicLot7202 =  PolyZone:Create({
     vector2(-208.05017089844,-172.66661071777)
 }, {
     name="publicLot7202",
-    debugPoly = false,
+    debugPoly = Config.DEBUG,
     minZ = 42.62,
     maxZ = 53.72
 })
@@ -346,7 +348,7 @@ ZoneProperties.publicLot7202 = {
 }
 
 
---Name: parkinglot 7226 - cam 4/20/21
+--Name: publicLot 7226 - cam 4/20/21
 Zones.publicLot7226 =  PolyZone:Create({
     vector2(-875.51849365234,-357.30825805664),
     vector2(-880.99096679688,-360.08728027344),
@@ -356,7 +358,7 @@ Zones.publicLot7226 =  PolyZone:Create({
     vector2(-888.41070556641,-332.41635131836)
 }, {
     name="publicLot7226",
-    debugPoly = false,
+    debugPoly = Config.DEBUG,
     minZ = 33.53,
     maxZ = 36.57
 })
@@ -364,7 +366,7 @@ Zones.publicLot7226 =  PolyZone:Create({
 ZoneProperties.publicLot7226 = {
     label = 'Public Parking Lot #7226',
     showBlip = true,
-    blipCoords = vector3(-874.20971679688,-366.95581054688,37.444507598877),
+    blipCoords = vector3(-870.55969238281,-373.95504760742,39.263290405273),
     public = true,
     pricePerHour = 100, -- IRL hours, in-game currency
     parkingCardAccepted = ParkingCards.DemoCard,
@@ -385,7 +387,7 @@ ZoneProperties.publicLot7226 = {
 }
 
 
---Name: parkinglot 8032 8035 - cam 4/21/21
+--Name: publicLot 8032 8035 - cam 4/21/21
 -- lots more spaces, accross road from hospital lot
 Zones.publicLot8032 =  PolyZone:Create({
     vector2(85.620063781738,-698.71856689453),
@@ -404,7 +406,7 @@ Zones.publicLot8032 =  PolyZone:Create({
     vector2(88.903259277344,-690.11920166016)
 }, {
     name="publicLot8032",
-    debugPoly = false,
+    debugPoly = Config.DEBUG,
     minZ = 30.66,
     maxZ = 34.97
 })
@@ -412,7 +414,7 @@ Zones.publicLot8032 =  PolyZone:Create({
 ZoneProperties.publicLot8032 = {
     label = 'Public Parking Lot #8032 / #8035',
     showBlip = true,
-    blipCoords = vector3(154.52964782715,-715.90972900391,33.131694793701),
+    blipCoords = vector3(183.60179138184,-724.15228271484,33.968318939209),
     public = true,
     pricePerHour = 100, -- IRL hours, in-game currency
     parkingCardAccepted = ParkingCards.DemoCard,
@@ -438,7 +440,7 @@ ZoneProperties.publicLot8032 = {
 }
 
 
---Name: parkinglot 8070 - cam 4/21/21
+--Name: publicLot 8070 - cam 4/21/21
 -- a lot more spaces to be added
 -- TODO - expand polyzone to cover upper level overhang
 Zones.publicLot8070 =  PolyZone:Create({
@@ -464,7 +466,7 @@ Zones.publicLot8070 =  PolyZone:Create({
     vector2(-480.36907958984,-733.20104980469)
 }, {
     name="publicLot8070",
-    debugPoly = false,
+    debugPoly = Config.DEBUG,
     --minZ = 42.62,
     --maxZ = 53.72
 })
@@ -472,124 +474,124 @@ Zones.publicLot8070 =  PolyZone:Create({
 ZoneProperties.publicLot8070 = {
     label = 'Public Lot #8070',
     showBlip = true,
-    blipCoords = vector3(-461.54147338867,-769.94396972656,30.342355728149),
-    public = true,
-    pricePerHour = 100, -- IRL hours, in-game currency
-    parkingCardAccepted = ParkingCards.DemoCard,
-    hideParkedCars = true,
-    parkingSpots = { --  parking spots
-        -- vector coords, heading
+    blipCoords = vector3(-453.65963745117,-819.56896972656,30.651081085205),
+public = true,
+pricePerHour = 100, -- IRL hours, in-game currency
+parkingCardAccepted = ParkingCards.DemoCard,
+hideParkedCars = true,
+parkingSpots = { --  parking spots
+-- vector coords, heading
 
-        -- row 1  (following entry arrows, uncovered lot, not garage)
-        {vector3(-444.95953369141,-808.71026611328,30.166198730469), 269.07},
-        {vector3(-444.88763427734,-805.00964355469,30.166816711426), 269.07},
-        {vector3(-444.78570556641,-801.21929931641,30.170724868774), 269.07},
-        {vector3(-444.75540161133,-797.72265625,30.17405128479), 269.07},
+-- row 1  (following entry arrows, uncovered lot, not garage)
+{vector3(-444.95953369141,-808.71026611328,30.166198730469), 269.07},
+{vector3(-444.88763427734,-805.00964355469,30.166816711426), 269.07},
+{vector3(-444.78570556641,-801.21929931641,30.170724868774), 269.07},
+{vector3(-444.75540161133,-797.72265625,30.17405128479), 269.07},
 
-        -- row 2 (near exit arrows, uncovered lot)
-        {vector3(-476.72198486328,-809.97576904297,30.167894363403), 89.62},
-        {vector3(-476.80377197266,-806.83947753906,30.169576644897), 89.62},
-        {vector3(-477.17947387695,-803.59796142578,30.171808242798), 89.62},
-        {vector3(-477.19195556641,-800.48986816406,30.174770355225), 89.62},
-        {vector3(-477.12542724609,-797.23565673828,30.176292419434), 89.62},
-        {vector3(-477.04425048828,-794.14282226562,30.177165985107), 89.62},
+-- row 2 (near exit arrows, uncovered lot)
+{vector3(-476.72198486328,-809.97576904297,30.167894363403), 89.62},
+{vector3(-476.80377197266,-806.83947753906,30.169576644897), 89.62},
+{vector3(-477.17947387695,-803.59796142578,30.171808242798), 89.62},
+{vector3(-477.19195556641,-800.48986816406,30.174770355225), 89.62},
+{vector3(-477.12542724609,-797.23565673828,30.176292419434), 89.62},
+{vector3(-477.04425048828,-794.14282226562,30.177165985107), 89.62},
 
-        -- row 3 (entry arrow side, inside, first floor)
-        {vector3(-446.63592529297,-764.79443359375,30.190031051636), 269.87},
-        {vector3(-446.35717773438,-767.45928955078,30.189647674561), 269.87},
-        {vector3(-446.24124145508,-770.30767822266,30.189617156982), 269.87},
+-- row 3 (entry arrow side, inside, first floor)
+{vector3(-446.63592529297,-764.79443359375,30.190031051636), 269.87},
+{vector3(-446.35717773438,-767.45928955078,30.189647674561), 269.87},
+{vector3(-446.24124145508,-770.30767822266,30.189617156982), 269.87},
 
-        --row 4 (exit arrow side, inside, first floor)
-        {vector3(-476.96179199219,-770.31121826172,30.190313339233), 88.71},
-        {vector3(-477.03442382812,-767.42529296875,30.191173553467), 88.71},
-        {vector3(-477.63061523438,-764.63354492188,30.190355300903), 88.71}
-    }
+--row 4 (exit arrow side, inside, first floor)
+{vector3(-476.96179199219,-770.31121826172,30.190313339233), 88.71},
+{vector3(-477.03442382812,-767.42529296875,30.191173553467), 88.71},
+{vector3(-477.63061523438,-764.63354492188,30.190355300903), 88.71}
+}
 }
 
 
---Name: parkinglot 9294 - cam 4/21/21
+--Name: publicLot 9294 - cam 4/21/21
 -- lots of more room for spaces
 Zones.publicLot9294 =  PolyZone:Create({
-    vector2(1033.880859375,-2290.26171875),
-    vector2(1000.8485717773,-2287.7282714844),
-    vector2(995.16351318359,-2360.2463378906),
-    vector2(999.54193115234,-2361.068359375),
-    vector2(998.68060302734,-2370.8793945312),
-    vector2(1026.8218994141,-2373.3422851562)
+vector2(1033.880859375,-2290.26171875),
+vector2(1000.8485717773,-2287.7282714844),
+vector2(995.16351318359,-2360.2463378906),
+vector2(999.54193115234,-2361.068359375),
+vector2(998.68060302734,-2370.8793945312),
+vector2(1026.8218994141,-2373.3422851562)
 }, {
-    name="publicLot9294",
-    debugPoly = false,
-    minZ = 28.59,
-    maxZ = 32.69
+name="publicLot9294",
+debugPoly = Config.DEBUG,
+minZ = 28.59,
+maxZ = 32.69
 })
 
 ZoneProperties.publicLot9294 = {
-    label = 'Public Parking Lot #9294',
-    showBlip = true,
-    blipCoords = vector3(1012.3754882812,-2336.2658691406,30.1373462677),
-    public = true,
-    pricePerHour = 100, -- IRL hours, in-game currency
-    parkingCardAccepted = ParkingCards.DemoCard,
-    hideParkedCars = true,
-    parkingSpots = { --  parking spots
-        -- vector coords, heading
+label = 'Public Parking Lot #9294',
+showBlip = true,
+blipCoords = vector3(1033.4229736328,-2296.0339355469,30.50952911377),
+public = true,
+pricePerHour = 100, -- IRL hours, in-game currency
+parkingCardAccepted = ParkingCards.DemoCard,
+hideParkedCars = true,
+parkingSpots = { --  parking spots
+-- vector coords, heading
 
-        -- row 1 (entrance fence line - no lines, just lot)
-        {vector3(1028.1773681641,-2310.7565917969,30.13830947876), 264.81},
-        {vector3(1027.5076904297,-2315.2805175781,30.13773727417), 264.81},
-        {vector3(1027.0235595703,-2318.6025390625,30.137128829956), 264.81},
-        {vector3(1026.7052001953,-2322.9055175781,30.136991500854), 264.81},
-        {vector3(1027.1665039062,-2327.3745117188,30.137516021729), 264.81},
-        {vector3(1026.236328125,-2331.0297851562,30.137460708618), 264.81},
-        {vector3(1025.0650634766,-2334.3879394531,30.137300491333), 264.81},
-        {vector3(1024.1796875,-2338.1098632812,30.137815475464), 264.81},
-        {vector3(1024.998046875,-2342.1218261719,30.137126922607), 264.81},
-        {vector3(1024.8876953125,-2345.7158203125,30.138568878174), 264.81},
-        {vector3(1025.8160400391,-2349.1513671875,30.13715171814), 264.81},
-        {vector3(1024.8997802734,-2352.65234375,30.13743019104), 264.81},
-        {vector3(1024.1364746094,-2356.2893066406,30.137372970581), 264.81},
-        {vector3(1024.3594970703,-2359.3703613281,30.138233184814), 264.81}
-    }
+-- row 1 (entrance fence line - no lines, just lot)
+{vector3(1028.1773681641,-2310.7565917969,30.13830947876), 264.81},
+{vector3(1027.5076904297,-2315.2805175781,30.13773727417), 264.81},
+{vector3(1027.0235595703,-2318.6025390625,30.137128829956), 264.81},
+{vector3(1026.7052001953,-2322.9055175781,30.136991500854), 264.81},
+{vector3(1027.1665039062,-2327.3745117188,30.137516021729), 264.81},
+{vector3(1026.236328125,-2331.0297851562,30.137460708618), 264.81},
+{vector3(1025.0650634766,-2334.3879394531,30.137300491333), 264.81},
+{vector3(1024.1796875,-2338.1098632812,30.137815475464), 264.81},
+{vector3(1024.998046875,-2342.1218261719,30.137126922607), 264.81},
+{vector3(1024.8876953125,-2345.7158203125,30.138568878174), 264.81},
+{vector3(1025.8160400391,-2349.1513671875,30.13715171814), 264.81},
+{vector3(1024.8997802734,-2352.65234375,30.13743019104), 264.81},
+{vector3(1024.1364746094,-2356.2893066406,30.137372970581), 264.81},
+{vector3(1024.3594970703,-2359.3703613281,30.138233184814), 264.81}
+}
 }
 
 
---Name: parkinglot 10026 - cam 4/21/21
+--Name: publicLot 10026 - cam 4/21/21
 --  room for spaces
 Zones.publicLot10026 =  PolyZone:Create({
-    vector2(-1031.6091308594,-2677.5520019531),
-    vector2(-1026.6564941406,-2668.3688964844),
-    vector2(-1025.4677734375,-2658.7502441406),
-    vector2(-1060.5941162109,-2638.4755859375),
-    vector2(-1059.9448242188,-2653.0158691406),
-    vector2(-1053.6512451172,-2668.1154785156),
-    vector2(-1045.4166259766,-2677.5910644531),
-    vector2(-1039.1027832031,-2681.9968261719)
+vector2(-1031.6091308594,-2677.5520019531),
+vector2(-1026.6564941406,-2668.3688964844),
+vector2(-1025.4677734375,-2658.7502441406),
+vector2(-1060.5941162109,-2638.4755859375),
+vector2(-1059.9448242188,-2653.0158691406),
+vector2(-1053.6512451172,-2668.1154785156),
+vector2(-1045.4166259766,-2677.5910644531),
+vector2(-1039.1027832031,-2681.9968261719)
 }, {
-    name="publicLot10026",
-    debugPoly = false,
-    -- minZ = 28.59,
-    -- maxZ = 32.69
+name="publicLot10026",
+debugPoly = Config.DEBUG,
+-- minZ = 28.59,
+-- maxZ = 32.69
 })
 
 ZoneProperties.publicLot10026 = {
-    label = 'Public Parking Lot #10026',
-    showBlip = true,
-    blipCoords = vector3(-1033.0518798828,-2671.8916015625,13.830760002136),
-    public = true,
-    pricePerHour = 100, -- IRL hours, in-game currency
-    parkingCardAccepted = ParkingCards.DemoCard,
-    hideParkedCars = true,
-    parkingSpots = { --  parking spots
-        -- vector coords, heading
+label = 'Public Parking Lot #10026',
+showBlip = true,
+blipCoords = vector3(-1033.0518798828,-2671.8916015625,13.830760002136),
+public = true,
+pricePerHour = 100, -- IRL hours, in-game currency
+parkingCardAccepted = ParkingCards.DemoCard,
+hideParkedCars = true,
+parkingSpots = { --  parking spots
+-- vector coords, heading
 
-        -- row 1 
-        {vector3(-1038.2703857422,-2677.4909667969,13.309228897095), 144.47},
-        {vector3(-1041.4948730469,-2675.4599609375,13.309979438782), 144.47},
-        {vector3(-1044.0687255859,-2673.5212402344,13.31088924408), 144.47},
+-- row 1 
+{vector3(-1038.2703857422,-2677.4909667969,13.309228897095), 144.47},
+{vector3(-1041.4948730469,-2675.4599609375,13.309979438782), 144.47},
+{vector3(-1044.0687255859,-2673.5212402344,13.31088924408), 144.47},
 
-        -- row 2 (building side)
-        {vector3(-1029.3107910156,-2661.732421875,13.309367179871), 328.15},
-        {vector3(-1032.3776855469,-2659.7243652344,13.309422492981), 328.15},
-        {vector3(-1035.1848144531,-2657.7734375,13.309747695923), 328.15}
-    }
+-- row 2 (building side)
+{vector3(-1029.3107910156,-2661.732421875,13.309367179871), 328.15},
+{vector3(-1032.3776855469,-2659.7243652344,13.309422492981), 328.15},
+{vector3(-1035.1848144531,-2657.7734375,13.309747695923), 328.15}
+}
 }
