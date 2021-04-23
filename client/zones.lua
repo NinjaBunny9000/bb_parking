@@ -4,7 +4,7 @@
 --- DateTime: 4/16/2021 6:17 PM
 ---
 
---- parking lots found but not added 5061, 8170, 9110(mall), 10025(ungated airport lot)
+--- possible lots found but not added across from 1105, 1040, 1080, 5011, 5033(plaza), 5061, 7004, 8170, 9110(mall), 10025(ungated airport lot)
 --  lots added: 5047, 7148, 7179, 7190, 7202 [rockford plaza], 7226, 8032 <-> 8035, 8037, 8070, 9294, 10026
 
 ParkingCards = {
@@ -109,20 +109,20 @@ ZoneProperties.publicLot8037 = {
 }
 
 
---Name: testZone | 2021-04-18T03:59:00Z
-Zones.testZone = PolyZone:Create({
+--Name: publicLot7190 | 2021-04-18T03:59:00Z
+Zones.publicLot7190 = PolyZone:Create({
     vector2(107.52922821045, -198.13516235352),
     vector2(98.244728088379, -221.63882446289),
     vector2(69.518508911133, -212.92121887207),
     vector2(77.808059692383, -187.94606018066)
 }, {
-    name="testZone",
+    name="publicLot7190",
     debugPoly = false,
     --minZ = 54.148162841797,
     --maxZ = 55.929985046387
 })
 
-ZoneProperties.testZone = {
+ZoneProperties.publicLot7190 = {
     label = 'Public Parking Lot #7190',
     showBlip = true,
     public = true,
@@ -157,7 +157,7 @@ ZoneProperties.testZone = {
 }
 
 --Name: parkinglot 5047 - cam 4/21/21
-Zones.parkingLot5047 =  PolyZone:Create({
+Zones.publicLot5047 =  PolyZone:Create({
     vector2(-3040.849609375,596.55847167969),
     vector2(-3043.1784667969,595.78863525391),
     vector2(-3044.0700683594,596.59332275391),
@@ -198,7 +198,7 @@ ZoneProperties.publicLot5047 = {
 
 
 --Name: parkinglot 7148 - cam 4/21/21
-Zones.parkingLot7148 =  PolyZone:Create({
+Zones.publicLot7148 =  PolyZone:Create({
     vector2(-536.22485351562, 71.157936096191),
     vector2(-490.13128662109,69.536598205566),
     vector2(-493.31838989258,33.187633514404),
@@ -249,7 +249,7 @@ ZoneProperties.publicLot7148 = {
 
 
 --Name: parkinglot 7179 - cam 4/21/21
-Zones.template7179 =  PolyZone:Create({
+Zones.publicLot7179 =  PolyZone:Create({
     vector2(-888.14697265625,-138.55535888672),
     vector2(-901.75897216797,-144.78569030762),
     vector2(-903.13330078125,-142.24299621582),
@@ -472,7 +472,7 @@ Zones.publicLot8070 =  PolyZone:Create({
 ZoneProperties.publicLot8070 = {
     label = 'Public Lot #8070',
     showBlip = true,
-    blipCoords = vector3(-461.54147338867,-769.94396972656,30.342355728149),,
+    blipCoords = vector3(-461.54147338867,-769.94396972656,30.342355728149),
     public = true,
     pricePerHour = 100, -- IRL hours, in-game currency
     parkingCardAccepted = ParkingCards.DemoCard,
@@ -560,10 +560,10 @@ Zones.publicLot10026 =  PolyZone:Create({
     vector2(-1026.6564941406,-2668.3688964844),
     vector2(-1025.4677734375,-2658.7502441406),
     vector2(-1060.5941162109,-2638.4755859375),
-    vector3(-1059.9448242188,-2653.0158691406),
-    vector3(-1053.6512451172,-2668.1154785156),
-    vector3(-1045.4166259766,-2677.5910644531),
-    vector3(-1039.1027832031,-2681.9968261719)
+    vector2(-1059.9448242188,-2653.0158691406),
+    vector2(-1053.6512451172,-2668.1154785156),
+    vector2(-1045.4166259766,-2677.5910644531),
+    vector2(-1039.1027832031,-2681.9968261719)
 }, {
     name="publicLot10026",
     debugPoly = false,
