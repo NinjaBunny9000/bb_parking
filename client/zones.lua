@@ -5,7 +5,7 @@
 ---
 
 --- possible lots found but not added across from 1105, 1040, 1080, 5011, 5033(plaza), 5061, 7004, 8170, 9110(mall), 10025(ungated airport lot)
---  lots added: 5047, 7148, 7179, 7190, 7202 [rockford plaza], 7226, 8032 <-> 8035, 8037, 8070, 9294, 10026
+---  lots added: 5047, 7148, 7179, 7190, 7202 [rockford plaza], 7226, 8032 <-> 8035, 8037, 8070, 9294, 10026
 
 ParkingCards = {
     DemoCard = {
